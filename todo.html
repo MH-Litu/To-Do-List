@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular Fundamentals</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+<div  ng-app="myApp" class="container-fluid" >
+	<div class="row">
+		<div ng-controller="TodoController" class="col-sm-12 col-md-4 todo_list">
+			<h3><b>TO DO LIST</b></h3>
+			<hr class="todo_line"/>
+
+			<form name="frm" ng-submit="addTodo()">
+				<input type="text" name="newtodo" ng-model="newtodo" class="todo_input" required size="40"/>
+				<button ng-disabled="frm.$invalid" class="btn_add">Add</button>
+			</form>
+
+			<ol class="todo_output">
+				<li ng-repeat="todo in todos">
+					<input type="checkbox" ng-model="todo.done"/>
+					<span ng-class="{'done':todo.done}">{{todo.title}}</span>
+				</li>
+			</ol>
+			<button ng-click="clearCompleted()" class="btn_style pull-right">Clear Checked</button>
+		</div>
+
+		
+	</div>
+</div>
+		
+</body>
+</html>
